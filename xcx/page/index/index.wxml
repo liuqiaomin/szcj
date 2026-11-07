@@ -1,0 +1,219 @@
+<cu-custom bgColor="bg-green">
+  <view slot="content">首页</view>
+</cu-custom>
+<view class="search_new">
+  <view wx:if="{{branch_list}}" style="background-color: {{branch_list.Notice_color?branch_list.Notice_color:'#39b54a'}};">
+    <text class="tongzhi-text" style="color: {{branch_list.Notice_text?branch_list.Notice_text:'#ffffff'}};">{{branch_list.Notice}}</text>
+  </view>
+  <view class="cu-bar   search bg-green" bind:tap="searchbu">
+    <view class="search-form round ">
+      <text class="cuIcon-search "></text>
+      <input type="text" disabled placeholder="搜索商品"></input>
+    </view>
+    <view class="action">
+      <button class="cu-btn bg-cyan shadow-blur xm round">搜索</button>
+    </view>
+  </view>
+  <view class="cu-bar bg-green">
+    <view class="action">
+      <text class="cuIcon-squarecheck text-white"></text>
+      自营仓库
+    </view>
+    <view class="action">
+      <text class="cuIcon-deliver_fill text-white" style="padding: 6rpx 7rpx 3rpx 3rpx;"></text>最快30分钟送达
+    </view>
+    <view class="action">
+      <text class="cuIcon-safe text-white"></text>出车：早8点至晚6点
+    </view>
+  </view>
+</view>
+<view wx:if="{{getLocation_XY}}">
+  <view class="padding flex flex-direction" bind:tap="cxsq">
+    <button class="cu-btn bg-yellow round lg">授权定位获取您最近的仓库</button>
+  </view>
+</view>
+<view wx:if="{{branch_list}}">
+  <view class="cu-list menu-avatar" style="border-radius: 40rpx 40rpx 0rpx 0rpx;">
+    <view class="cu-item ">
+      <image class="cu-avatar round lg" src="{{branch_list.branch_logo}}" mode="" />
+      <view class="content flex-sub ">
+        <view class="text-grey">{{branch_list.branch_name}}
+          <text wx:if="{{distance}}" class="text-sm" style="padding-left: 30rpx;">距您<text wx:if="{{distance}}" style="padding: 0rpx 18rpx 0rpx 18rpx;">{{distance}}</text>公里</text>
+        </view>
+        <view class="text-gray text-sm flex justify-between">
+          {{branch_list.address}}
+        </view>
+      </view>
+      <view class="action">
+        <button class="cu-btn bg-yellow sm" bind:tap="freeTell">电话</button>
+        <view style="padding-bottom: 5rpx;"></view>
+        <button class="cu-btn bg-blue  sm" bind:tap="openLoca">导航</button>
+      </view>
+    </view>
+  </view>
+  <navigator url="./branch" hover-class="none" class="cu-bar bg-white solid-bottom">
+    <view class="action">
+      <text class="cuIcon-title text-green"></text><text class="text-black text-bold">切换仓库</text>
+    </view>
+    <view class="action">
+      <view class="cuIcon-right"></view>
+    </view>
+  </navigator>
+  <view wx:if="{{Coupons}}" class="cu-list grid col-2 {{gridBorder?'':'no-border'}}">
+    <view class="cu-item" wx:for="{{Coupons}}" wx:key='p'>
+      <view bind:tap="Couponsadd" data-item="{{item}}" class="con bg-{{item.coupon_color=='红色'?'red':item.coupon_color=='蓝色'?'blue':item.coupon_color=='黄色'?'yellow':item.coupon_color=='紫色'?'purple':'grey'}}">
+        <view class="circle1"></view>
+        <!-- <view class="circle2"></view> -->
+        <view class="checkbox" style="padding: 0rpx;">
+          <view style="width: 80%; padding: 16rpx 30rpx 0rpx 10rpx; ">
+            <view style="color: #ffffff; font-size: 40rpx;" class="text-price">{{item.discount_amount}}</view>
+            <view style="padding: 8rpx; color: #ffffff; font-size: 23rpx;">{{item.coupon_type}}券</view>
+            <view style="color: #ffffff; font-size: 20rpx; ">
+              满{{item.minimum_consume}}可用 </view>
+          </view>
+          <view class="" style="color: #ffffff; width: 50%; padding: 51rpx 10rpx 0rpx 0rpx;">立即领取</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-bar sby bg-white  solid-bottom">
+    <view class='action'>
+      <text class='cuIcon-titles text-green'></text><text class="text-black text-bold">商品分类</text>
+    </view>
+  </view>
+  <view wx:if="{{ProductCategory}}">
+    <view class="cu-list grid col-5 no-border">
+      <view class="cu-item" wx:for="{{ProductCategory}}" wx:key='index' wx:key="o">
+        <navigator hover-class="none" url="/page/index/category?category={{item.category_name}}">
+          <view>
+            <image class="radius" style="width: 100rpx; height: 100rpx;" src="{{item.image?item.image:'/images/logo.jpg'}}" mode="" />
+          </view>
+          <text>{{item.category_name}}</text>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="cu-bar sby bg-white  solid-bottom" wx:if="{{marketinglist.length>0}}">
+    <view class='action'>
+      <text class='cuIcon-titles text-green'></text> <text class="text-black text-bold"> 活动商品</text>
+    </view>
+  </view>
+  <view class=" bg-white data-v-92bb8f34 ">
+    <view class="main data-v-92bb8f34 ">
+      <view class="recommend-info data-v-92bb8f34">
+        <view class="goods-list data-v-92bb8f34">
+          <view class="list data-v-92bb8f34" wx:for="{{marketinglist}}" wx:key="index">
+            <view bindtap="TZ" data-id="{{item.id}}">
+              <image class="radius" src="{{item.main_image?item.main_image:'/images/logo.jpg'}}" mode="widthFix">
+                <view class="badge">{{item.marketing}}</view>
+              </image>
+              <view class="title-tag data-v-92bb8f34">
+                <view class="tag data-v-92bb8f34">
+                  {{''+item.product_name+''}}
+                </view>
+              </view>
+              <view class="price-info data-v-92bb8f34">
+                <view class="user-price data-v-92bb8f34">
+                  <text class="min data-v-92bb8f34">￥</text>
+                  <text class="max data-v-92bb8f34">{{(SHXY==1?item.unit_price:'**')}}</text>
+                </view>
+                <view class="vip-price data-v-92bb8f34">
+                  <text class="data-v-92bb8f34">销量</text>
+                  <text class="data-v-92bb8f34" style="padding-left: 15rpx;">{{(SHXY==1?item.sales:'**')}}</text>
+                </view>
+                <view class="vip-price data-v-92bb8f34">
+                  <text class="">库存</text>
+                  <text class="max data-v-92bb8f34" style="padding-left: 15rpx;">{{(SHXY==1?item.stock:'**')}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="cu-bar bg-white ">
+              <view class="action">
+                <view>{{item.specification}}</view>
+              </view>
+              <view class="action" bind:tap="add" data-item="{{item}}">
+                <text class="cuIcon-add bg-green round "></text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-bar xby bg-white  solid-bottom" wx:if="{{list}}">
+    <view class='action'>
+      <text class='cuIcon-titles text-yellow'></text><text class="text-black text-bold">推荐商品</text>
+    </view>
+  </view>
+  <view wx:if="{{list.length==0}}">
+    <image style="width: 100%;" src="/images/data.png" mode="widthFix" />
+  </view>
+  <view class=" bg-white data-v-92bb8f34 ">
+    <view class="main data-v-92bb8f34 ">
+      <view class="recommend-info data-v-92bb8f34">
+        <view class="goods-list data-v-92bb8f34">
+          <view class="list data-v-92bb8f34" wx:for="{{list}}" wx:key="index">
+            <view bindtap="TZ" data-id="{{item.id}}">
+              <image class="radius" src="{{item.main_image?item.main_image:'/images/logo.jpg'}}" mode="widthFix">
+              </image>
+              <view class="title-tag data-v-92bb8f34">
+                <view class="tag data-v-92bb8f34">
+                  {{''+item.product_name+''}}
+                </view>
+              </view>
+              <view class="price-info data-v-92bb8f34">
+                <view class="user-price data-v-92bb8f34">
+                  <text class="min data-v-92bb8f34">￥</text>
+                  <text class="max data-v-92bb8f34">{{(SHXY==1?item.unit_price:'**')}}</text>
+                </view>
+                <view class="vip-price data-v-92bb8f34">
+                  <text class="data-v-92bb8f34">销量</text>
+                  <text class="data-v-92bb8f34" style="padding-left: 15rpx;">{{SHXY==1?item.sales:'**'}}</text>
+                </view>
+                <view class="vip-price data-v-92bb8f34">
+                  <text class="">库存</text>
+                  <text class="max data-v-92bb8f34" style="padding-left: 15rpx;">{{(SHXY==1?item.stock:'**')}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="cu-bar bg-white ">
+              <view class="action">
+                <view>{{item.specification}}</view>
+              </view>
+              <view class="action" bind:tap="add" data-item="{{item}}">
+                <text class="cuIcon-add bg-green round "></text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 预售入口 -->
+<!-- <navigator url="/page/Presale/index">
+  <image src="/images/ys.jpg" style="width: 100%; height: 80rpx;" mode="widthFix" />
+</navigator> -->
+<button open-type="contact">
+  <image class="newkf" src="/images/tabbar/kf.svg" mode="widthFix"><button open-type="contact"></button></image>
+</button>
+
+
+<view class="cu-modal  {{modalName=='Modal'?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog  bg-white">
+    <view class="cu-bar justify-end">
+      <view class="content">温馨提示</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-sm bg-white text-red">
+      <text style="font-size: 40rpx;"> 请补充门店信息方可购买</text>
+    </view>
+    <view class="cu-bar btn-group">
+      <button class="cu-btn   bg-white round">随便看看</button>
+      <button bind:tap="supplement" class="cu-btn bg-yellow  round">去补充</button>
+    </view>
+  </view>
+</view>

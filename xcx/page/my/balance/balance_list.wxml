@@ -1,0 +1,33 @@
+<cu-custom bgColor="bg-yellow" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">余额记录</view>
+</cu-custom>
+
+<view wx:for="{{list}}" wx:key="o" style="padding: 10rpx 15rpx 0rpx 15rpx;">
+  <view class="cu-bar sby bg-white solid-bottom">
+    <view class="action">
+      <view class="text-red"> {{item.remarks}}</view>
+    </view>
+    <view class="action">
+      <text class="{{item.change_type=='-'?'':'text-red'}}" style="font-size: 50rpx;"> {{item.change_type}}</text>
+      <text class="text-price  text-xl {{item.change_type=='-'?'':'text-red'}}" style="padding-left: 30rpx;">{{item.changed_sum}}</text>
+    </view>
+  </view>
+  <view class="cu-bar  bg-white solid-bottom">
+    <view class="action">
+      原余额 <text class="text-price  text-sm text-grey" style="padding-left: 30rpx;"> {{item.original_balance}}</text>
+    </view>
+    <view class="action">
+      变动后余额<text class="text-price  text-sm text-grey" style="padding-left: 30rpx;"> {{item.changed_balance}}</text>
+    </view>
+  </view>
+
+  <view class="cu-bar xby bg-white solid-bottom">
+    <view class="action">
+      时间 </view>
+    <view class="action">
+      {{item.created_time}}
+    </view>
+  </view>
+  <view class="fgx"></view>
+</view>

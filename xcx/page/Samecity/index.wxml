@@ -1,0 +1,33 @@
+<cu-custom bgColor="bg-gradual-green">
+  <view slot="content">同城信息</view>
+</cu-custom>
+<view >
+  <view  class="cu-card dynamic no-card">
+    <view wx:for="{{list}}" wx:key="i" class="cu-item shadow">
+      <view class="cu-list menu-avatar ">
+        <view class="cu-item solid-bottom">
+          <image class="cu-avatar round lg" src="{{item.avatar}}" mode="" />
+          <view class="content flex-sub ">
+            <view>{{item.nickname}}</view>
+            <view class="text-gray text-sm flex justify-between">
+              {{item.timestamp}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="text-content ">
+        <view class="padding-sm"> {{item.description}}</view>
+      </view>
+      <view class="padding-sm">
+        <image class="by" style="width: 100%;" bindtap="ViewImage" data-i="{{item}}" data-url="{{item.image}}" src="{{item.image}}" mode="aspectFill" />
+      </view>
+      <view class="fgx" style="background-color: rgb(224, 223, 221);"></view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{list.length==0}}">
+  <image style="width: 100%;" src="/images/data.png" mode="widthFix" />
+</view>
+<navigator url="./add">
+  <image class="newkf" src="/images/add.png" mode="widthFix"><button open-type="contact"></button></image>
+</navigator>

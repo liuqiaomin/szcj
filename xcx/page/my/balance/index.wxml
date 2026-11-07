@@ -1,0 +1,42 @@
+<cu-custom bgColor="bg-yellow" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">钱包</view>
+</cu-custom>
+<view class="padding flex text-center text-grey bg-white solid-bottom">
+  <view class="flex flex-sub flex-direction solid-right">
+    <view class="text-xxl text-orange">{{User.balance}}</view>
+    <view class="margin-top-sm">
+      钱包</view>
+  </view>
+  <navigator hover-class="none" url="/page/my/balance/balance_list" class="flex flex-sub flex-direction ">
+    <view style="font-size: 50rpx;" class=" text-grey cuIcon-edit"></view>
+    <view class="margin-top-sm">
+      余额记录</view>
+  </navigator>
+</view>
+<view class="" style="padding: 50rpx 0 0 0;">
+  <view class="grid col-5 sby bg-white padding-sm">
+    <view class="margin-tb-sm text-center" wx:for="{{ColorList}}" wx:key='p'>
+      <button class="cu-btn  {{tindex==index?'line-yellow':'line-black'}}" bind:tap="tindexb" data-index="{{index}}" data-i="{{item}}">{{item.title}}</button>
+    </view>
+  </view>
+  <view style="padding: 20rpx;" wx:if="{{find}}" class="text-center xby bg-white"> <text class="text-yellow ">充值 <text class="text-red text-xl" style="padding: 0rpx 20rpx 0rpx 20rpx;">{{find.a}}</text>元,送<text class="text-red text-xxl" style="padding: 0rpx 20rpx 0rpx 20rpx;">{{find.b}}</text>元</text></view>
+  <!-- <view class="padding flex flex-direction" bind:tap="f"> -->
+  <view class="padding flex flex-direction" bind:tap="f">
+    <button class="cu-btn bg-yellow round lg">确认充值</button>
+  </view>
+  <view wx:if="{{ColorList_list}}" style="padding: 50rpx 0;">
+    <view class="cu-bar  bg-white  solid-bottom">
+      <view class='action'>
+        <text class='cuIcon-titles text-yellow'></text>充值活动
+      </view>
+    </view>
+    <view wx:for="{{ColorList_list}}" wx:key="index">
+      <view class="cu-bar  bg-white solid-bottom">
+        <view class="action ">
+          <text class="text-yellow ">充值 <text class="text-red text-xl" style="padding: 0rpx 20rpx 0rpx 20rpx;">{{item.a}}</text>元,送<text class="text-red text-xxl" style="padding: 0rpx 20rpx 0rpx 20rpx;">{{item.b}}</text>元</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

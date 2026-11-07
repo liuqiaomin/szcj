@@ -1,0 +1,38 @@
+.search_new {
+  width: 100%;
+  position: fixed;
+  top: 140rpx;
+  z-index: 2;
+}
+
+.cu-bar .search-form {
+  background-color: #f5f5f5;
+  line-height: 64rpx;
+  height: 68rpx;
+  font-size: 24rpx;
+  color: var(--black);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin: 0 30rpx;
+}
+
+page {
+  background-color: #ffffff;
+}
+
+.newkf {
+  width: 90rpx;
+  height: 90rpx;
+  position: fixed;
+  right: 20rpx;
+  bottom: 300rpx;
+}
+
+.cu-bars {
+  display: flex;
+  position: relative;
+  align-items: center;
+  min-height: 10rpx;
+  justify-content: space-between;
+}

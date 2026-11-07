@@ -1,0 +1,15 @@
+.cu-form-group textarea {
+  margin: 32rpx 0 30rpx;
+  width: 100%;
+  height: 200rpx !important;  
+  line-height: 1.2em;
+  flex: 1;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+  padding: 20rpx 20rpx 10rpx 20rpx;
+}
+.newkf {
+  width:94%;
+  position: fixed;
+  bottom: 10rpx;
+}

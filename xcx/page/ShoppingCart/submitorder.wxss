@@ -1,0 +1,60 @@
+.nav .cu-item.cur {
+  border-bottom: 6rpx solid;
+}
+.cu-form-group textarea {
+  margin: 32rpx 0 30rpx;
+  width: 100%;
+  height: 200rpx !important;  
+  line-height: 1.2em;
+  flex: 1;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+  padding: 20rpx 20rpx 10rpx 20rpx;
+}
+.jym {
+  position: relative;
+  /* 设置相对定位 */
+  width: 20%;
+}
+
+.jym::before {
+  content: '';
+  /* 必须设置内容，即使是空的 */
+  position: absolute;
+  /* 绝对定位 */
+  top: 50%;
+  /* 定位到容器的中间 */
+  left: 0;
+  width: 100%;
+  /* 横线宽度与容器相同 */
+  height: 1px;
+  /* 横线高度设置为1px，这会创建一条细线 */
+  background-color: black;
+  /* 横线颜色 */
+}
+
+page {
+  background-color: rgb(236, 235, 234);
+}
+
+swiper {
+  display: block;
+  height: 100px;
+}
+
+.cu-tag.badge {
+  border-radius: 20rpx;
+  position: absolute;
+  top: 0rpx;
+  right: -10rpx;
+  font-size: 20rpx;
+  padding: 0rpx 10rpx;
+  height: 28rpx;
+  color: var(--white);
+}
+
+.cu-avatar.xl {
+  width: 148rpx;
+  height: 148rpx;
+  font-size: 2.5em;
+}

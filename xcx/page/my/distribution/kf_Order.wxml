@@ -1,0 +1,45 @@
+<cu-custom bgColor="bg-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">订单列表</view>
+</cu-custom>
+<view style="padding: 20rpx 15rpx 20rpx 15rpx;">
+  <view wx:for="{{list}}" wx:key="p" bind:tap="xq" data-item="{{item}}">
+    <view class="cu-bar sby bg-white solid-bottom">
+      <view class="action">
+        {{item.customer_name}}
+      </view>
+      <view class="action ">
+        实付: <text style="padding-left: 20rpx;" class="text-price  text-xl text-red">{{item.order_total_price}}</text>
+
+      </view>
+    </view>
+    <view class="cu-bar  bg-white solid-bottom">
+      <view class="action">
+        客户地址
+      </view>
+      <view class="action ">
+        {{item.customer_address}}
+      </view>
+    </view>
+    <view class="cu-bar  bg-white solid-bottom" wx:if="{{item.T_Estimated_commission}}">
+      <view class="action">
+        预估佣金
+      </view>
+      <view class="action " >
+        <text style="padding-left: 20rpx;" class="text-price  text-xxl text-yellow">{{item.T_Estimated_commission}}</text>
+      </view>
+    </view>
+    <view class="cu-bar xby bg-white solid-bottom">
+      <view class="action">
+        {{item.created_time}}
+      </view>
+      <view class="action">
+        <button class="cu-btn bg-green sm shadow">{{item.state==0?'待分配':item.state==2?'配送中':item.state==3?'已完成':item.state==5?'退货中':'其他'}}</button>
+      </view>
+    </view>
+    <view class="fgx"></view>
+  </view>
+</view>
+<view wx:if="{{list.length==0}}">
+  <image style="width: 100%;" src="/images/data.png" mode="widthFix" />
+</view>

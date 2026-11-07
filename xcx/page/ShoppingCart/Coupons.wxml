@@ -1,0 +1,32 @@
+<cu-custom bgColor="bg-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">选择优惠券</view>
+</cu-custom>
+<view class="cu-list grid col-2 no-border">
+  <view class="cu-item" wx:for="{{list}}" wx:key='p'>
+    <view bind:tap="TZ" data-i="{{item}}" class="con bg-{{item.minimum_consume>meet&&item.coupon_type=='满减'?'grey':item.coupon_color=='红色'?'red':item.coupon_color=='蓝色'?'blue':item.coupon_color=='黄色'?'yellow':item.coupon_color=='紫色'?'purple':'grey'}}">
+      <view class="circle1"></view>
+      <!-- <view class="circle2"></view> -->
+      <view class="checkbox" style="padding: 0rpx;">
+        <view style="width: 80%; padding: 16rpx 30rpx 0rpx 10rpx; ">
+          <view style="color: #ffffff; font-size: 40rpx;" class="text-price">{{item.discount_amount}}</view>
+          <view style="color: #ffffff; font-size: 23rpx;">{{item.coupon_type}}券</view>
+          <view style=" padding: 8rpx; color: #ffffff;  ">
+            <text style="color: #ffffff; font-size: 23rpx;" wx:if="{{item.coupon_type=='满减'}}">满{{item.minimum_consume}}可用</text>
+            <text style="color: #ffffff; font-size: 23rpx;" wx:else>通用</text>
+          </view>
+        </view>
+        <view wx:if="{{item.coupon_type=='满减'}}" class="" style="color: #ffffff; width: 55%; padding: 51rpx 20rpx 0rpx 0rpx;">
+          {{item.minimum_consume<meet?'选择':'不可使用'}}
+        </view>
+        <view wx:else style="color: #ffffff; width: 55%; padding: 51rpx 20rpx 0rpx 0rpx;">
+          选择
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{list.length==0}}">
+  <image style="width: 100%;" src="/images/data.png" mode="widthFix" />
+</view>

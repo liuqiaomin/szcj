@@ -1,0 +1,94 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">商品详情</view>
+</cu-custom>
+<view wx:if="{{multi_images.length>0}}">
+  <swiper class="screen-swiper " indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+    <view>
+      <swiper-item wx:for="{{multi_images}}" wx:key='p'>
+        <image src="{{item.url}}" mode="widthFix"></image>
+      </swiper-item>
+    </view>
+  </swiper>
+</view>
+<view wx:else>
+  <image src="{{o.main_image}}" mode="widthFix"></image>
+</view>
+<view class="padding-sm  bg-white">
+  <view class="  flex align-center">
+    <view class="padding text-black text-bold">{{o.product_name}}{{o.specification}}</view>
+    <view wx:if="{{SHXY==1}}" >
+      <text style="padding:0rpx 90rpx 0rpx 30rpx; text-decoration: line-through;" class="text-price  text-sm">{{o.retail_price}}</text>
+      <text class="text-price text-red text-xxl">{{o.grocery_price}}</text>
+    </view>
+  </view>
+  <view style=" padding: 5rpx 10rpx 5rpx 10rpx;" wx:if="{{SHXY==1}}">
+    <button wx:for="{{full_list2}}" wx:key="i" class="cu-btn  line-red sm ">满{{item.a}}件 单价：{{item.b}}</button>
+  </view>
+  <view class="cu-bar " wx:if="{{SHXY==1}}">
+    <view class="action">销量：{{SHXY==1?item.sales:'**'}}
+    </view>
+    <view class="action">库存：{{o.stock!=0?o.stock:'已售罄'}}</view>
+  </view>
+  <view class="cu-bar ">
+    <view class='action'>
+      <text class='cuIcon-titles text-orange '></text> 商品描述
+    </view>
+  </view>
+  <view style="padding: 30rpx;">
+    <rich-text nodes="{{o.fwb}}"></rich-text>
+  </view>
+</view>
+<view style="padding: 100rpx;"></view>
+<view class="cu-bar new bg-white tabbar border shop">
+  <navigator target="self" open-type='switchTab' url="/page/ShoppingCart/index" class="action">
+    <view class="cuIcon-cart">
+      <view class="cu-tag badge">{{preorder_count}}</view>
+    </view>
+    购物车
+  </navigator>
+  <view class="bg-orange submit" bindtap="showModal" data-target="bottomModal">加入购物车</view>
+  <navigator target="self" open-type='switchTab' url="/page/ShoppingCart/index" class="bg-red submit">去结算</navigator>
+</view>
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">要购买的数量</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <view style="padding: 0rpx 200rpx 0rpx 200rpx;">
+        <view class="checkbox text-black text-bold">
+          <view style="padding:10rpx 0rpx 10rpx 0rpx;  width: 30%;" bind:tap="product_quantityA" data-item="{{item}}" class="cuIcon-move  "></view>
+          <view style="width: 100rpx; ">
+            <input type='number' bindinput="product_quantity" value="{{product_quantity}}"></input>
+          </view>
+          <view style="padding:10rpx 0rpx 10rpx 0rpx; width: 30%;" bind:tap="product_quantityB" data-item="{{item}}" class="cuIcon-add "></view>
+        </view>
+      </view>
+    </view>
+    <view class="cu-bar bg-white">
+      <view class="action text-blue" bindtap="hideModal">取消</view>
+      <view class="action text-green" bind:tap="add">确定</view>
+    </view>
+  </view>
+</view>
+<view class="cu-modal {{modalName=='Modal'?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog  bg-white">
+    <view class="cu-bart bg-white justify-end">
+      <view class="content">温馨提示</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-sm bg-white text-red">
+      <text style="font-size: 40rpx;"> 请补充门店信息方可购买</text>
+    </view>
+    <view class="cu-bar btn-group">
+      <button class="cu-btn bg-grey round">随便看看</button>
+      <button bind:tap="supplement" class="cu-btn bg-green  round">去补充</button>
+    </view>
+  </view>
+</view>

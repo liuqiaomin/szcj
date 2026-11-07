@@ -1,0 +1,7 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">退换货说明</view>
+</cu-custom>
+<view style="padding: 10rpx 30rpx 10rpx 30rpx;">
+  <rich-text nodes="{{Returns}}" />
+</view>

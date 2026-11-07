@@ -1,0 +1,11 @@
+page{
+  background-color: #f8f7f7;
+}
+
+.newkf {
+  width: 90rpx;
+  height: 90rpx;
+  position: fixed;
+  right: 20rpx;
+  bottom: 100rpx;
+}

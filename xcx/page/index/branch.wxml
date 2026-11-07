@@ -1,0 +1,26 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">仓库列表</view>
+</cu-custom>
+
+<view>
+  <view class="cu-list menu-avatar" style="border-radius: 40rpx 40rpx 0rpx 0rpx;">
+    <view class="cu-item solid-bottom" wx:for="{{list}}" bind:tap="qh" data-i="{{item}}" wx:key="i">
+      <image class="cu-avatar round lg" src="{{item.branch_logo?item.branch_logo:'/images/logo.jpg'}}" mode="" />
+      <view class="content flex-sub ">
+        <view class="text-grey">{{item.branch_name}}
+
+        </view>
+        <view class="text-gray text-sm flex justify-between">
+          {{item.address}}
+        </view>
+      </view>
+      <view class="action">
+        <button class="cu-btn bg-yellow sm" bind:tap="freeTell">选择</button>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{list.length==0}}">
+  <image style="width: 100%;" src="/images/data.png" mode="widthFix" />
+</view>

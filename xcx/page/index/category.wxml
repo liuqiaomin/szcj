@@ -1,0 +1,90 @@
+<cu-custom bgColor="bg-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">{{category}}</view>
+</cu-custom>
+<view class="cu-bar search_new  search bg-green">
+  <view class="search-form round ">
+    <text class="cuIcon-search "></text>
+    <input type="text" bindinput="search" placeholder="搜索商品" confirm-type="search" value="{{search}}"></input>
+  </view>
+  <view class="action">
+    <button bind:tap="searchbu" class="cu-btn bg-red shadow-blur xm round">搜索</button>
+  </view>
+</view>
+<view style="padding: 50rpx;"></view>
+<view class="bg-white padding-sm">
+  <view class=" bg-white data-v-92bb8f34 ">
+    <view class="main data-v-92bb8f34 ">
+      <view class="recommend-info data-v-92bb8f34">
+        <view class="goods-list data-v-92bb8f34">
+          <view class="list data-v-92bb8f34" wx:for="{{list}}" wx:key="index">
+            <view bindtap="TZ" data-id="{{item.id}}">
+              <view class="pictrue data-v-92bb8f34">
+                <image class="data-v-92bb8f34" mode="heightFix" src="{{item.main_image?item.main_image:'/images/logo.jpg'}}"></image>
+              </view>
+              <view class="title-tag data-v-92bb8f34">
+                <view class="tag data-v-92bb8f34">
+                  {{''+item.product_name+''}}
+                </view>
+              </view>
+              <view class="price-info data-v-92bb8f34">
+                <view class="user-price data-v-92bb8f34">
+                  <text class="min data-v-92bb8f34">￥</text>
+                  <text class="max data-v-92bb8f34">{{(SHXY==1?item.unit_price:'**')}}</text>
+                </view>
+                <view class="vip-price data-v-92bb8f34">
+                  <text class="data-v-92bb8f34">销量</text>
+                  <text class="data-v-92bb8f34">{{SHXY==1?item.sales:'**'}}</text>
+                </view>
+                <view class="vip-price data-v-92bb8f34">
+                  <text class="">库存</text>
+                  <text class="">{{item.stock}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="cu-bar bg-white ">
+              <view class="action">
+                <view>{{item.specification}}</view>
+              </view>
+              <view class="action" bind:tap="add" data-item="{{item}}">
+                <text class="cuIcon-add bg-green round "></text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{list.length==0}}">
+  <image style="width: 100%;" src="/images/data.png" mode="widthFix" />
+</view>
+<view class="cu-modal {{modalName=='Modal'?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog  bg-white">
+    <view class="cu-bart bg-white justify-end">
+      <view class="content">温馨提示</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-sm bg-white text-red">
+      <text style="font-size: 40rpx;"> 请补充门店信息方可购买</text>
+    </view>
+    <view class="cu-bar btn-group">
+      <button class="cu-btn bg-grey round">随便看看</button>
+      <button bind:tap="supplement" class="cu-btn bg-green  round">去补充</button>
+    </view>
+  </view>
+</view>
+<button open-type="contact">
+  <image class="newkf" src="/images/tabbar/kf.svg" mode="widthFix"></image>
+</button>
+<navigator class="new2" open-type="switchTab" url="/page/ShoppingCart/index">
+  <view class="cuIcon-cart text-yellow" style="font-size: 80rpx;"></view>
+</navigator>
+<!-- <navigator target="self" open-type='switchTab' url="/page/ShoppingCart/index" class="new2">
+    <view class="cuIcon-cart">
+      <view class="cu-tag badge">{{preorder_count}}</view>
+    </view>
+    购物车
+  </navigator> -->

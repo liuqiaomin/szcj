@@ -1,0 +1,10 @@
+page{
+  background-color: rgb(245, 243, 239);
+}
+.cu-bar {
+  display: flex;
+  position: relative;
+  align-items: center;
+  min-height: 80rpx;
+  justify-content: space-between;
+}

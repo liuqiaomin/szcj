@@ -1,0 +1,27 @@
+.tower-swiper .tower-item {
+  transform: scale(calc(0.5 + var(--index) / 10));
+  margin-left: calc(var(--left) * 100rpx - 150rpx);
+  z-index: var(--index);
+}
+
+swiper {
+  display: block;
+  height: 350px;
+}
+.screen-swiper {
+  min-height: 100%;
+}
+
+
+.new {
+  width: 100%;
+  position: fixed;
+  bottom: 0rpx;
+}
+.newkf {
+  width: 90rpx;
+  height: 90rpx;
+  position: fixed;
+  right: 20rpx;
+  bottom: 200rpx;
+}

@@ -1,0 +1,133 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="content">订单详情</view>
+</cu-custom>
+<view class="padding-xs">
+  <view class="cu-bar sby bg-white solid-bottom">
+    <view class="action">
+      姓名：
+    </view>
+    <view class="action">
+      {{xq.customer_name}}
+    </view>
+  </view>
+  <view class="cu-bar  bg-white solid-bottom">
+    <view class="action">
+      电话：
+    </view>
+    <view class="action">
+      {{xq.customer_phone}}
+    </view>
+  </view>
+  <view class="cu-bar  bg-white solid-bottom">
+    <view class="action">
+      地址：
+    </view>
+    <view class="action">
+      {{xq.customer_address}}
+    </view>
+  </view>
+  <view class="cu-bar  bg-white solid-bottom">
+    <view class="action">
+      下单时间：
+    </view>
+    <view class="action">
+      {{xq.created_time}}
+    </view>
+  </view>
+  <view wx:for="{{list}}" wx:key="u">
+    <view class="cu-list menu-avatar  ">
+      <view class="cu-item">
+        <image class="cu-avatar  lg" src="{{item.product_main_image}}" mode="" />
+        <view class="content flex-sub">
+          <view class="text-{{xq.state==1?'gray':'black'}} text-bold">
+            <text class="text-cut" style="width:220px"> {{item.product_name}}</text>
+            <text class="text-price text-{{xq.state==1?'gray':'red'}}">{{item.total_price*item.product_quantity}}</text>
+          </view>
+          <view class="text-gray text-sm flex justify-between">
+            {{ item.product_unit}}||{{item.product_specification}}
+          </view>
+          <view class="text-gray  text-sm flex justify-between">
+            <text class="text-price text-sm  text-{{xq.state==1?'gray':'red'}}">{{item.total_price}} </text>
+            <view class="text-{{xq.state==1?'gray':'black'}} text-bold">
+              X <text class=" margin-xs ">{{item.product_quantity}}</text>
+            </view>
+            <view class="action" wx:if="{{xq.state==1}}">
+              <text class="text-red">退货中</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-bar  bg-white solid-bottom" wx:if="{{xq.freight>0}}">
+    <view class="action">
+      运费
+    </view>
+    <view class="action">
+      <text class="text-black text-bold"></text>
+      <text style="padding: 15rpx;" class="text-price text-red text-xl "> {{xq.freight}} </text>
+    </view>
+  </view>
+
+  <view class="cu-bar  bg-white solid-bottom">
+    <view class="action" style="text-decoration: line-through">
+      总价：<text class="text-price text-xl  text-grey ">{{xq.Ymeet}}</text>
+    </view>
+    <view class="action">
+      商品价格：<text class="text-price text-xxl text-bold ">{{xq.Smeets}}</text>
+    </view>
+  </view>
+  <view wx:for="{{Coupons_list}}" wx:key="index">
+    <view class="cu-bar  bg-white solid-bottom">
+      <view class="action ">
+        <text class="text-yellow text-sm"> {{item}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="cu-bar  bg-white solid-bottom">
+    <view class="action" wx:if="{{yh_price!=0}}">
+      优惠：<text class="text-price text-sm  text-orange ">{{yh_price}}</text>
+    </view>
+    <view class="action">
+      实付： <text class="text-price text-xxl  text-red text-bold"> {{xq.order_total_price}} </text>
+    </view>
+  </view>
+
+  <view class="cu-bar  bg-white solid-bottom">
+    <view class="action">
+      支付方式
+    </view>
+    <view class="action">
+      <text> {{xq.out_trade_num=='余额支付'?'余额支付':'微信支付'}} </text>
+    </view>
+  </view>
+  <view class="fgx"></view>
+  <view class="bg-white" wx:if="{{xq.delivery_person_id}}">
+    <view class="cu-bar   bg-white solid-bottom">
+      <view class="action">
+        配送员： {{xq.delivery_person}}
+      </view>
+    </view>
+    <view wx:if="{{receipt_photo_list}}" style="padding: 10rpx; ">
+      <view class="grid col-4  grid-square flex-sub">
+        <view class="bg-img" wx:for="{{receipt_photo_list}}" wx:key="t" bindtap="ViewImage" data-url="{{item}}">
+          <image src='{{item}}' mode='aspectFill'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-form-group " wx:if="{{xq.remarks}}">
+    <textarea class="bg-gray text-red" maxlength="-1" value="{{xq.remarks}}"> </textarea>
+  </view>
+  <view wx:if="{{xq.is_paid==1}}">
+    <view class="cu-bar xby  bg-white solid-bottom" wx:if="{{xq.state<6}}">
+      <view class="action "></view>
+      <view class="action " bind:tap="td">
+        <button class="cu-btn line-gray text-black sm shadow">申请退单</button>
+      </view>
+    </view>
+    <view class="padding flex flex-direction" wx:if="{{xq.state}}">
+      <button class="cu-btn  round bg-{{xq.state==0?'orange':xq.state==2?'black':xq.state==3?'green':xq.state==5?'cyan':xq.state==6?'red':xq.state==7?'gray':'black'}}  ">{{xq.state==0?'待出库':xq.state==1?'待分配':xq.state==2?'配送中':xq.state==3?'已完成':xq.state==5?'退货中':xq.state==6?'退单申请中':xq.state==7?'已取消':xq.state==8?'已退款':'其他'}}</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,25 @@
+<cu-custom bgColor="bg-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">我的客户</view>
+</cu-custom>
+<navigator url="/page/my/distribution/kf_Order?openid={{item._openid}}" class="cu-card case no-card solid-bottom" wx:for="{{list}}" wx:key="i">
+  <view class="cu-item shadow" >
+    <view class="cu-list menu-avatar">
+      <view class="cu-item">
+        <image class="cu-avatar round lg" src="{{item.Avatar?item.Avatar:'/images/logo.jpg'}}" mode="" />
+        <view class="content flex-sub">
+          <view class="text-grey">{{item.name}}</view>
+          <view class="text-gray text-sm flex justify-between">
+            {{item.address}}
+          </view>
+        </view>
+        <view class='action'>
+          订单 <text class='cuIcon-right text-black'></text>
+        </view>
+      </view>
+    </view>
+  </view>
+</navigator>
+<view wx:if="{{list.length==0}}">
+  <image style="width: 100%;" src="/images/data.png" mode="widthFix" />
+</view>

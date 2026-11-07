@@ -1,0 +1,47 @@
+<cu-custom bgColor="bg-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">{{category}}</view>
+</cu-custom>
+<view class="bg-white padding-sm">
+  <view class=" bg-white data-v-92bb8f34 ">
+  <view class="main data-v-92bb8f34 ">
+    <view class="recommend-info data-v-92bb8f34">
+      <view class="goods-list data-v-92bb8f34">
+        <view class="list data-v-92bb8f34" wx:for="{{list}}" wx:key="index">
+          <view bindtap="TZ" data-id="{{item.id}}">
+            <view class="pictrue data-v-92bb8f34">
+              <image class="data-v-92bb8f34" mode="heightFix" src="{{item.main_image?item.main_image:'/images/logo.jpg'}}"></image>
+            </view>
+            <view class="title-tag data-v-92bb8f34">
+              <view class="tag data-v-92bb8f34">
+                {{''+item.product_name+''}}
+              </view>
+            </view>
+            <view class="price-info data-v-92bb8f34">
+              <view class="user-price data-v-92bb8f34">
+                <text class="min data-v-92bb8f34">￥</text>
+                <text class="max data-v-92bb8f34">{{(SHXY==1?item.unit_price:'**')}}</text>
+              </view>
+              <view class="vip-price data-v-92bb8f34">
+                <text class="data-v-92bb8f34">销量</text>
+                <text class="data-v-92bb8f34">{{SHXY==1?item.sales:'**'}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="cu-bar bg-white ">
+            <view class="action">
+              <view>{{item.specification}}</view>
+            </view>
+            <view class="action" bind:tap="add" data-item="{{item}}">
+              <text class="cuIcon-add bg-green round "></text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>
+<view wx:if="{{list.length==0}}">
+  <image style="width: 100%;" src="/images/data.png" mode="widthFix" />
+</view>

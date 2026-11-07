@@ -1,0 +1,97 @@
+/* 滚动公告 */
+@keyframes remindMessage {
+  0% {
+    -webkit-transform: translateX(90%);
+  }
+
+  100% {
+    -webkit-transform: translateX(-180%);
+  }
+}
+
+.tongzhi-text {
+  font-size: 28rpx;
+  animation: remindMessage 10s linear infinite;
+  width: 100%;
+  padding: 20rpx;
+  display: block;
+  z-index: 2;
+}
+
+/* 滚动公告 end*/
+
+
+
+
+
+.cu-bar .search-form {
+  background-color: #f5f5f5;
+  line-height: 64rpx;
+  height: 68rpx;
+  font-size: 24rpx;
+  color: var(--black);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin: 0 30rpx;
+}
+
+page {
+  background-color: #f0f5f1;
+}
+
+
+
+.cu-bars {
+  display: flex;
+  position: relative;
+  align-items: center;
+  min-height: 10rpx;
+  justify-content: space-between;
+}
+
+/* 优惠券 */
+/* pages/cardCricle/index.wxss */
+
+.con {
+  min-height: 140rpx;
+  margin: 0rpx 17rpx 0rpx 23rpx;
+  position: relative;
+  z-index: 999;
+  border-radius: 20rpx;
+}
+
+.circle1 {
+  position: absolute;
+  width: 20rpx;
+  height: 40rpx;
+  border-radius: 0 20rpx 20rpx 0;
+  background: #fcfafb;
+  top: 50rpx;
+  left: 0;
+}
+
+.circle2 {
+  position: absolute;
+  width: 20rpx;
+  height: 40rpx;
+  border-radius: 20rpx 0 0 20rpx;
+  background: #faf9f9;
+  right: 0;
+  top: 50rpx;
+}
+
+/* WXSS文件 */
+.data-v-92bb8f34 .badge {
+  position: absolute;
+  top: 0;
+  right: 10;
+  padding: 2px 5px;
+  background-color: red;
+  /* 或者其他颜色 */
+  color: white;
+  border-radius: 0rpx 0rpx 0rpx 10rpx;
+  /* 如果你要的是一个圆形的角标 */
+  font-size: 12px;
+  /* 其他你需要的样式 */
+}

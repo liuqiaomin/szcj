@@ -1,0 +1,57 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="content">我的订单</view>
+</cu-custom>
+<scroll-view scroll-x class="bg-white nav">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==TabCur?'text-green cur text-xl text-bold':''}}" wx:for="{{TabCurs}}" wx:key='p' bindtap="tabSelect" data-id="{{index}}" data-ii="{{item.ii}}">
+      {{item.i}}
+    </view>
+  </view>
+</scroll-view>
+<view style="padding: 20rpx 15rpx 20rpx 15rpx;">
+  <view wx:for="{{list}}" wx:key="p">
+    <view class="cu-bar sby bg-white solid-bottom">
+      <view class="action">
+        {{item.customer_name}}
+      </view>
+      <view class="action text-price  text-xl text-red">
+        {{item.order_total_price}}
+      </view>
+      <view class="action" wx:if="{{item.is_paid==0&&item.state!=7}}">
+        <navigator url="/page/ShoppingCart/pay?id={{item.id}}" class="cu-btn  round bg-orange sm ">未支付,去支付</navigator>
+      </view>
+      <view class="action" wx:else>
+        <button class="cu-btn  round line-{{item.state==0?'orange':item.state==2?'black':item.state==3?'green':item.state==5?'cyan':item.state==6?'red':item.state==7?'gray':'black'}} sm ">{{item.state==0?'待出库':item.state==1?'待分配':item.state==2?'配送中':item.state==3?'已完成':item.state==5?'退货中':item.state==6?'退单申请中':item.state==7?'已取消':item.state==8?'已退款':''}}</button>
+      </view>
+
+    </view>
+    <view class="cu-bar  bg-white solid-bottom" bind:tap="xq" data-item="{{item}}">
+      <view class="action">
+        {{item.customer_address}}
+      </view>
+      <view class="action">
+        <text class="cuIcon-right"></text>
+      </view>
+    </view>
+    <view wx:if="{{TabCur==2}}" class="cu-bar   bg-white solid-bottom">
+      <view class="action">
+        配送员： {{item.delivery_person}}
+      </view>
+      <!-- <view class="action">
+        <button catchtap="freeTell" data-phone="{{item.customer_phone}}"  class="cu-btn bg-white sm shadow" >拨打</button>
+      </view> -->
+    </view>
+    <view class="cu-bar xby bg-white solid-bottom">
+      <view class="action">
+        {{item.created_time}}
+      </view>
+      <!-- <view wx:if="{{item.state!=7&&item.state!=8}}" class="action" bind:tap="zlyd" data-id="{{item.order_list_id}}">
+        <button class="cu-btn  round line-orange sm ">再来一单</button>
+      </view> -->
+    </view>
+    <view class="fgx"></view>
+  </view>
+</view>
+<view wx:if="{{list.length==0}}">
+  <image style="width: 100%;" src="/images/data.png" mode="widthFix" />
+</view>

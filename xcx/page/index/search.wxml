@@ -1,0 +1,60 @@
+<cu-custom bgColor="bg-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">商品搜索</view>
+</cu-custom>
+<view class="cu-bar  search bg-green">
+  <view class="search-form round ">
+    <text class="cuIcon-search "></text>
+    <input type="text" bindinput="search" placeholder="搜索商品" confirm-type="search" value="{{s}}"></input>
+  </view>
+  <view class="action">
+    <button bind:tap="iuss" class="cu-btn bg-cyan shadow-blur xm round">搜索</button>
+  </view>
+</view>
+<view class="grid col-5 padding-sm">
+  <view class="margin-tb-sm text-center" wx:for="{{searchList}}" wx:key='o'>
+    <view bind:tap="suu" data-i="{{item}}" class="cu-btn round line-white">{{item}}</view>
+  </view>
+</view>
+<view class=" bg-white data-v-92bb8f34 ">
+  <view style="height: 20rpx;"></view>
+  <view class="main data-v-92bb8f34 ">
+    <view class="recommend-info data-v-92bb8f34">
+      <view class="goods-list data-v-92bb8f34">
+        <view class="list data-v-92bb8f34" wx:for="{{list}}" wx:key="index">
+          <view bindtap="TZ" data-id="{{item.id}}">
+            <view class="pictrue data-v-92bb8f34">
+              <image class="data-v-92bb8f34" mode="heightFix" src="{{item.main_image?item.main_image:'/images/logo.jpg'}}"></image>
+            </view>
+            <view class="title-tag data-v-92bb8f34">
+              <view class="tag data-v-92bb8f34">
+                {{''+item.product_name+''}}
+              </view>
+            </view>
+            <view class="price-info data-v-92bb8f34">
+              <view class="user-price data-v-92bb8f34">
+                <text class="min data-v-92bb8f34">￥</text>
+                <text class="max data-v-92bb8f34">{{(SHXY==1?item.retail_price:'**')}}</text>
+              </view>
+              <view class="vip-price data-v-92bb8f34">
+                <text class="data-v-92bb8f34">销量</text>
+                <text class="data-v-92bb8f34">{{SHXY==1?item.sales:'**'}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="cu-bar bg-white ">
+            <view class="action">
+              <view>{{item.specification}}</view>
+            </view>
+            <view class="action" bind:tap="add" data-item="{{item}}">
+              <text class="cuIcon-add bg-green round "></text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{list.length==0}}">
+  <image style="width: 100%;" src="/images/data.png" mode="widthFix" />
+</view>

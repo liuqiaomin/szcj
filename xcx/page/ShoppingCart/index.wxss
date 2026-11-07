@@ -1,0 +1,17 @@
+page{
+  background-color: rgb(243, 241, 241);
+}
+.margin-lr-xs {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding: 13rpx;
+}
+.cu-list.menu-avatar>.cu-item {
+  position: relative;
+  display: flex;
+  padding-right: 10rpx;
+  height: 180rpx;
+  background-color: var(--white);
+  justify-content: flex-end;
+  align-items: center;
+}

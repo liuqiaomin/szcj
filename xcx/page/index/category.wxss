@@ -1,0 +1,24 @@
+
+
+
+.newkf {
+  width: 90rpx;
+  height: 90rpx;
+  position: fixed;
+  left: 20rpx;
+  bottom: 300rpx;
+}
+.new2 {
+  width: 90rpx;
+  height: 90rpx;
+  position: fixed;
+  left: 20rpx;
+  bottom: 200rpx;
+}
+.cu-bars {
+  display: flex;
+  position: relative;
+  align-items: center;
+  min-height: 10rpx;
+  justify-content: space-between;
+}

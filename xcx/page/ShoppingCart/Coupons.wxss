@@ -1,0 +1,30 @@
+/* 优惠券 */
+/* pages/cardCricle/index.wxss */
+
+.con {
+  min-height: 140rpx;
+  margin: 0rpx 17rpx 0rpx 23rpx;
+  position: relative;
+  z-index: 999;
+  border-radius: 20rpx;
+}
+
+.circle1 {
+  position: absolute;
+  width: 20rpx;
+  height: 40rpx;
+  border-radius: 0 20rpx 20rpx 0;
+  background: #fcfafb;
+  top:50rpx;
+  left: 0;
+}
+
+.circle2 {
+  position: absolute;
+  width: 20rpx;
+  height: 40rpx;
+  border-radius: 20rpx 0 0 20rpx;
+  background: #faf9f9;
+  right: 0;
+  top:50rpx;
+}

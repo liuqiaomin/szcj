@@ -1,0 +1,74 @@
+<scroll-view scroll-y class="scrollPage">
+  <view class="UCenter-bg">
+    <image src="{{User.Avatar}}" class="round" mode="widthFix"></image>
+    <view class="text-xl text-black text-bold" style="padding: 13rpx;">{{User.Niche}}
+    </view>
+    <view class="text-sm">{{User.grade}}
+    </view>
+    <view class="margin-top-sm">
+      <text class="text-sm">{{User.phone}}</text>
+    </view>
+    <image src="/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+  </view>
+  <view class="padding flex text-center text-grey bg-white shadow-warp">
+    <navigator hover-class="none" url="/page/my/balance/index" class="flex flex-sub flex-direction solid-right">
+      <view class="text-xxl text-orange">{{User.balance}}</view>
+      <view class="margin-top-sm">
+        我的余额</view>
+    </navigator>
+    <navigator hover-class="none" url="/page/my/balance/index" class="flex flex-sub flex-direction ">
+      <view style="font-size: 50rpx;" class=" text-orange cuIcon-pay"></view>
+      <view class="margin-top-sm">
+        我的钱包</view>
+    </navigator>
+  </view>
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow">
+      <navigator class="content" url="/page/my/Order/index" hover-class="none">
+        <text class="cuIcon-formfill text-green"></text>
+        <text class="text-grey">我的订单</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <button class="cu-btn content" bind:tap="chooseAddress">
+        <text class="cuIcon-location text-cyan"></text>
+        <text class="text-grey">我的地址</text>
+      </button>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/page/my/Coupons/index" hover-class="none">
+        <text class="cuIcon-ticket text-orange"></text>
+        <text class="text-grey">我的优惠券</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/page/my/collection/index" hover-class="none">
+        <text class="cuIcon-hotfill text-red"></text>
+        <text class="text-grey">我的收藏</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/page/my/distribution/index" hover-class="none">
+        <text class="cuIcon-we text-red"></text>
+        <text class="text-grey">分销中心</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/page/my/explain/index" hover-class="none">
+        <text class="cuIcon-question text-black"></text>
+        <text class="text-grey">退换货说明</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/page/my/About/index" hover-class="none">
+        <text class="cuIcon-magic text-black"></text>
+        <text class="text-grey">关于我们</text>
+      </navigator>
+    </view>
+  </view>
+  <view class="cu-tabbar-height"></view>
+</scroll-view>
+
+<button open-type="contact">
+  <image class="newkf" src="/images/tabbar/kf.svg" mode="widthFix"><button open-type="contact"></button></image>
+</button>
