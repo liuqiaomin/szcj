@@ -1,0 +1,33 @@
+http://119.29.157.23:8888/tencentcloud
+ַ:?
+username:959ab6de
+password:c255fc9191b7
+
+
+外网面板地址: http://43.138.203.124:8888/tencentcloud
+username: xneb75es
+
+https://code.visualstudio.com/thank-you?dv=win64user&build=stable
+
+
+https://npm.nodejs.cn/cli/v10/configuring-npm/install
+
+https://www.runoob.com/
+
+
+npm install -g yarn
+
+
+
+
+https://yuanbao.tencent.com/chat/
+
+
+腾讯云代码助手 CodeBuddy
+
+以管理员身份打开 PowerShell
+Win + S → 输入 PowerShell
+右键 → 以管理员身份运行
+执行以下命令：
+Set-ExecutionPolicy RemoteSigned
+https://github.com/liuqiaomin/szcj
