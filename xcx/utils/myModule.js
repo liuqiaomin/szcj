@@ -1,7 +1,7 @@
 const app = getApp();
 function get(data) {  
   let that = this
- app.r('api', data, function (res) {
+ app.r(data.Type, function (res) {
     if (res.page_info.total_items == 0) {
       wx.showToast({
         title: '暂无商品！',

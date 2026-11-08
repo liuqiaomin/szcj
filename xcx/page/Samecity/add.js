@@ -76,7 +76,7 @@ Page({
               title: '上传图片中'
             });
             wx.uploadFile({
-              url: 'https://xcx.szhxch.com/Si', // 仅为示例，并非真实的接口地址  
+              url: 'https://sc.szhxch.com/xcx/upload', // 仅为示例，并非真实的接口地址  
               filePath: item,
               name: 'file',
               success: function (uploadFileRes) {

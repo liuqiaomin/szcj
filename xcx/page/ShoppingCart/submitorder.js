@@ -138,7 +138,7 @@ Page({
       Table: "xcx_User",
       sum: that.data.meets,
     }
-    app.r('api', data, function (res) {
+    app.r(data.Type, data, function (res) {
       wx.hideLoading()
       if (res.status.error_code == 0) {
         that.add(0, '余额支付')

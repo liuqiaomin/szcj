@@ -8,13 +8,13 @@ Page({
     xy2: false,
     XY: false,
     VXY: true,
-    name: null,//	收货店名
-    address: null,//	收货地址
-    phone: null,//	收货电话
+    name: null, //	收货店名
+    address: null, //	收货地址
+    phone: null, //	收货电话
 
-    Doorsign: null,//	门头
-    Avatar: null,//	头像
-    Niche: null//	呢称
+    Doorsign: null, //	门头
+    Avatar: null, //	头像
+    Niche: null //	呢称
   },
   onShow: function () {
     let that = this
@@ -72,15 +72,30 @@ Page({
   //头像
   onChooseAvatar(e) {
     let that = this
-    const { avatarUrl } = e.detail
+    const {
+      avatarUrl
+    } = e.detail
     wx.uploadFile({
-      url: 'https://xcx.szhxch.com/i',
+      url: 'https://sc.szhxch.com/xcx/upload',
       filePath: avatarUrl,
       name: 'file',
       success(res) {
-        that.setData({
-          Avatar: res.data,
-        })
+        wx.hideLoading()
+        let data = JSON.parse(res.data) // ← 解析
+        if (data.code == 0) {
+          that.setData({
+            Avatar: data.data.url, // ← 只存 URL 字符串
+          })
+          wx.showToast({
+            title: '上传成功',
+            icon: 'success'
+          })
+        } else {
+          wx.showToast({
+            title: '上传失败',
+            icon: 'none'
+          })
+        }
       }
     })
 
@@ -102,17 +117,26 @@ Page({
         console.log(i.tempFilePath)
         console.log(i.size)
         wx.uploadFile({
-          url: 'https://xcx.szhxch.com/i',
+          url: 'https://sc.szhxch.com/xcx/upload',
           filePath: i.tempFilePath,
           name: 'file',
           success(res) {
-            setTimeout(function () {
-              wx.hideLoading()
-            }, 0)
-            that.setData({
-              Doorsign: res.data,
-            })
-
+            wx.hideLoading()
+            let data = JSON.parse(res.data) // ← 解析
+            if (data.code == 0) {
+              that.setData({
+                Doorsign: data.data.url, // ← 只存 URL 字符串
+              })
+              wx.showToast({
+                title: '上传成功',
+                icon: 'success'
+              })
+            } else {
+              wx.showToast({
+                title: '上传失败',
+                icon: 'none'
+              })
+            }
           }
         })
       }
@@ -196,14 +220,14 @@ Page({
     let data = {
       Type: 'xcx_User_up',
       Table: 'xcx_User',
-      name: o.name,//	收货店名
-      address: o.address,//	收货地址
-      phone: o.phone,//	收货电话
-      Doorsign: o.Doorsign,//	门头
-      Avatar: o.Avatar,//	头像
-      Niche: o.Niche,//	呢称
+      name: o.name, //	收货店名
+      address: o.address, //	收货地址
+      phone: o.phone, //	收货电话
+      Doorsign: o.Doorsign, //	门头
+      Avatar: o.Avatar, //	头像
+      Niche: o.Niche, //	呢称
     }
-    app.r('api', data, function (res) {
+    app.r(data.Type, function (res) {
       if (res.status.error_code == 0) {
         console.log(res)
         that.sm()
