@@ -31,3 +31,7 @@ Win + S → 输入 PowerShell
 执行以下命令：
 Set-ExecutionPolicy RemoteSigned
 https://github.com/liuqiaomin/szcj
+
+git add xcx
+git commit -m "update xcx: 改了啥"
+git push
