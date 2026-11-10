@@ -9,6 +9,7 @@ Page({
   },
 
   onLoad(options) {
+    console.log(app.globalData.branch_list)
     this.setData({
       protocol: app.globalData.branch_list.protocol
     })
