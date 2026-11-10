@@ -60,6 +60,7 @@ Page({
   },
 
   onShow() {
+    console.log('onShow')
     let that = this;
     let data = {
       Type: "id_get",

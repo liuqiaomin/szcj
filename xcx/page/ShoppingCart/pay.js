@@ -66,7 +66,7 @@ Page({
         wx.hideLoading()
       }, 2000)
       let o = res.data;
-      let pay = o.Preorder;
+      let pay = o.pay_params;
       that.setData({
         Preorder: o.Preorder,
         list: o.data,
